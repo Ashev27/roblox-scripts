@@ -1,8 +1,8 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "Ashly",
-   LoadingTitle = "Ashly Scrip",
+   Name = "Ashly Hun",
+   LoadingTitle = "Ashly Hub",
    LoadingSubtitle = "by Ashe",
    ToggleUIKeybind = "K",
    ConfigurationSaving = {Enabled = true, FolderName = "MyScript"}
