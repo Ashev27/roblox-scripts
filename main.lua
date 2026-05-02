@@ -1,14 +1,65 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
+pcall(function()
+    setclipboard("https://discord.gg/uevZf2qtM")
+end)
+
 local Window = Rayfield:CreateWindow({
-   Name = "Ashly Hub",
-   LoadingTitle = "Ashly Hub",
+   Name = "Ashly",
+   LoadingTitle = "Ashly Scrip",
    LoadingSubtitle = "by Ashe",
    ToggleUIKeybind = "K",
-   ConfigurationSaving = {Enabled = true, FolderName = "MyScript"}
+   ConfigurationSaving = {Enabled = true, FolderName = "MyScript"},
+   Discord = {
+      Enabled = true,
+      Invite = "uevZf2qtM",
+      RememberJoins = true
+   },
+   KeySystem = true,
+   KeySettings = {
+      Title = "Ashly Key System",
+      Subtitle = "Key in Discord",
+      Note = "Link copied to clipboard! (discord.gg/uevZf2qtM)",
+      FileName = "AshlyKey",
+      SaveKey = true,
+      GrabKeyFromSite = false,
+      Key = {"Ashlythebest1"}
+   }
 })
 
 local Tab = Window:CreateTab("Main", 4483362458)
+
+Tab:CreateButton({
+   Name = "Join Our Discord",
+   Callback = function()
+      setclipboard("https://discord.gg/uevZf2qtM")
+      Rayfield:Notify({
+         Title = "Discord",
+         Content = "Link copied to clipboard! Opening Discord...",
+         Duration = 5,
+         Image = 4483362458,
+      })
+      local req = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
+      if req then
+         pcall(function()
+            req({
+               Url = 'http://127.0.0.1:6463/rpc?v=1',
+               Method = 'POST',
+               Headers = {
+                  ['Content-Type'] = 'application/json',
+                  Origin = 'https://discord.com'
+               },
+               Body = game:GetService('HttpService'):JSONEncode({
+                  cmd = 'INVITE_BROWSER',
+                  nonce = game:GetService('HttpService'):GenerateGUID(false),
+                  args = {code = 'uevZf2qtM'}
+               })
+            })
+         end)
+      end
+   end,
+})
+
 Tab:CreateSection("ESP")
 local ESPEnabled = false
 local ChamsEnabled = false
